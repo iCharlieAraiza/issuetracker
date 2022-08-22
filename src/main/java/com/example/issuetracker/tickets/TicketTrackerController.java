@@ -2,13 +2,10 @@ package com.example.issuetracker.tickets;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 import java.util.List;
 
 @RestController
 public class TicketTrackerController {
-
     final TrackServiceImpl service;
 
     public TicketTrackerController(TrackServiceImpl service) {
@@ -21,8 +18,8 @@ public class TicketTrackerController {
     }
 
     @GetMapping("api/tickets/{id}")
-    String getTicket(@PathVariable Long id) {
-        return "Ticket " + id;
+    Ticket getTicket(@PathVariable Long id) {
+        return service.get(id);
     }
 
     @PostMapping("api/tickets/")
